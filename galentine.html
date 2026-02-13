@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #e0a4ab;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden; /* ❗ prevents scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* title */
+h1 {
+    color: black;
+    margin-bottom: 30px;
+}
+
+/* card box */
+.card {
+    background: white;
+    width: 300px;      /* slightly bigger */
+    height: 300px;     /* slightly bigger */
+    padding: 15px;     /* adds space inside */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* gif */
+.card img {
+    width: 100%;
+}
+
+/* buttons */
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 22px;
+    font-size: 15px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 8px;
+}
+
+#yes {
+    background: #ff2d55;
+    color: white;
+}
+
+#no {
+    background: #eee;
+    color: #333;
+    position: relative;
+}
+</style>
+</head>
+<body>
+
+<h1>Will you be my Galentine? ❤️</h1>
+
+<div class="card">
+    <!-- DIRECT GIF LINK -->
+    <img src="https://media.tenor.com/CW9zeEa2DksAAAAj/milk-and-mocha-poke.gif">
+</div>
+
+<div class="buttons">
+    <button id="yes">YES 😘</button>
+    <button id="no">NO 🥺</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+
+// keep button inside viewport
+noBtn.addEventListener("mouseover", () => {
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+});
+
+document.getElementById("yes").onclick = () => {
+    document.body.innerHTML = `
+
+    <style>
+        body{
+            margin:0;
+            height:100vh;
+            background:#e0a4ab;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        h1{
+            margin-bottom:10px;
+        }
+
+        p{
+            margin-bottom:20px;
+        }
+
+        .card{
+            background:white;
+            width:260px;
+            height:260px;
+            border-radius:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+        }
+
+        .card img{
+            width:100%;
+        }
+
+        .heart{
+            position:absolute;
+            bottom:0;
+            font-size:24px;
+            animation: floatUp 4s linear infinite;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0);
+                opacity:1;
+            }
+            to {
+                transform: translateY(-100vh);
+                opacity:0;
+            }
+        }
+    </style>
+
+    <h1>YAYYY 😘❤️🫂</h1>
+    <p>Sam loves you soo much 💕♾️</p>
+
+    <div class="card">
+        <img src="https://media.tenor.com/YSk904TkxhkAAAAM/love-you.gif">
+    </div>
+    `;
+
+    // floating hearts
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = (20 + Math.random()*20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }, 300);
+};
+
+</script>
+
+</body>
+</html>
